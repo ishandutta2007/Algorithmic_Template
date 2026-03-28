@@ -1,6 +1,6 @@
-#include <iostream>
 #include <algorithm>
 #include <cstdio>
+#include <iostream>
 using namespace std;
 typedef long long ll;
 int x, y, q;
@@ -16,8 +16,8 @@ void ex_Eulid(int a, int b) {
     y = temp - a / b * y;
   }
 }
-//一定存在整数x,y，使得ax+by=gcd(a,b)
-ll exgcd(ll a, ll b, ll &x, ll &y)  // 返回a,b的最大公约数
+// 一定存在整数x,y，使得ax+by=gcd(a,b)
+ll exgcd(ll a, ll b, ll& x, ll& y)  // 返回a,b的最大公约数
 {
   if (!a && !b) return -1;
   if (!b) return x = 1, y = 0, a;

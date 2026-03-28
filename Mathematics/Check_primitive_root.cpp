@@ -7,15 +7,14 @@ g^d ≡ 1 (mod p) ，gcd(g,m) = 1
 
 */
 
-ll qpower(ll x,ll n,ll m)
-{
-    long long res = 1;
-    while(n > 0){
-        if(n & 1) res = (res * x) % m;
-        x = (x * x) % m;
-        n >>= 1;
-    }
-    return res;
+ll qpower(ll x, ll n, ll m) {
+  long long res = 1;
+  while (n > 0) {
+    if (n & 1) res = (res * x) % m;
+    x = (x * x) % m;
+    n >>= 1;
+  }
+  return res;
 }
 // bool check_primitive_root(ll g, ll p)
 // {
@@ -35,8 +34,7 @@ ll qpower(ll x,ll n,ll m)
 //   }
 //   return true;
 // }
-bool check_primitive_root(ll g, ll p)
-{
-  if (qpower(g,(p-1)/5,p)==1) return false;
+bool check_primitive_root(ll g, ll p) {
+  if (qpower(g, (p - 1) / 5, p) == 1) return false;
   return true;
 }

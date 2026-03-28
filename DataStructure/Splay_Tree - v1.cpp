@@ -5,17 +5,17 @@
 */
 
 #include <cstdio>
-#include <iostream>
 #include <cstring>
+#include <iostream>
 using namespace std;
 typedef long long ll;
 const int N = 500000;
 const int INF = 1e9;
 #define Key_value ch[ch[root][1]][0]
-//分别表示父结点，键值，左右孩子(0为左孩子，1为右孩子),根结点，结点数量
+// 分别表示父结点，键值，左右孩子(0为左孩子，1为右孩子),根结点，结点数量
 int pre[N], key[N], ch[N][2];
-int sz[N], st[N];    //子树规模，内存池
-int root, tot, top;  //根节点，根节点数量，内存池容量
+int sz[N], st[N];    // 子树规模，内存池
+int root, tot, top;  // 根节点，根节点数量，内存池容量
 // 题目特定数据
 int num[N];
 int val[N];
@@ -40,7 +40,7 @@ void debug() {
 // 以上debug
 
 // 新建一个结点
-void NewNode(int &x, int fa, int k) {
+void NewNode(int& x, int fa, int k) {
   if (top)
     x = st[top++];
   else
@@ -50,7 +50,7 @@ void NewNode(int &x, int fa, int k) {
   val[x] = k;
   add[x] = 0;
   sum[x] = k;
-  ch[x][0] = ch[x][1] = 0;  //左右孩子为空
+  ch[x][0] = ch[x][1] = 0;  // 左右孩子为空
 }
 
 void pushUp(int x) {
@@ -155,7 +155,7 @@ int getPre(int x) {
   while (ch[x][1]) x = ch[x][1];
   return key[x];
 }
-//找后继，即右子树的最左结点
+// 找后继，即右子树的最左结点
 int getSuf(int x) {
   if (!ch[x][1]) return INF;
   x = ch[x][1];
@@ -163,7 +163,7 @@ int getSuf(int x) {
   return key[x];
 }
 // 建树，中间结点先建立，然后分别对区间两端在左右子树建立
-void buildTree(int &x, int l, int r, int fa) {
+void buildTree(int& x, int l, int r, int fa) {
   if (l > r) return;
   int mid = (l + r) >> 1;
   NewNode(x, fa, num[mid]);
@@ -177,7 +177,7 @@ void Init() {
   add[0] = sum[0] = 0;
   root = top = tot = 0;
   NewNode(root, 0, -1);
-  NewNode(ch[root][1], root, -1);  //头尾各加入一个空位
+  NewNode(ch[root][1], root, -1);  // 头尾各加入一个空位
   sz[root] = 2;
 
   for (int i = 0; i < n; i++) scanf("%d", &num[i]);

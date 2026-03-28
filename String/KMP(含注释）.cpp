@@ -1,7 +1,7 @@
 // https://loj.ac/problem/103
 // res表示 B 在 A 中的出现次数。
 // fail就是next数组
-int kmp(char *a, char *b)  // 在 a 中寻找 b
+int kmp(char* a, char* b)  // 在 a 中寻找 b
 {
   // 求出字符串长度
   int na = strlen(a + 1), nb = strlen(b + 1);

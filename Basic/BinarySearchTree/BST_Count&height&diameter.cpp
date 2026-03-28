@@ -1,8 +1,8 @@
-#include <iostream>
+#include <algorithm>
+#include <cmath>
 #include <cstdio>
 #include <cstring>
-#include <cmath>
-#include <algorithm>
+#include <iostream>
 #include <queue>
 #include <stack>
 #include <vector>
@@ -15,90 +15,85 @@ struct Node {
   struct Node *left, *right;
 };
 struct Node* insert(int n) {
-  Node *tmp = new Node;
-  tmp -> val = n;
-  tmp -> left = nullptr;
-  tmp -> right =nullptr;
+  Node* tmp = new Node;
+  tmp->val = n;
+  tmp->left = nullptr;
+  tmp->right = nullptr;
   return tmp;
 }
 
 void inorder(Node* root) {
-  if(root != nullptr) {
-    inorder(root -> left);
-    std::cout << root -> val << ' ';
-    inorder(root -> right);
+  if (root != nullptr) {
+    inorder(root->left);
+    std::cout << root->val << ' ';
+    inorder(root->right);
   }
 }
 void postorder(Node* root) {
-  if(root != nullptr) {
-    postorder(root -> right);
-    postorder(root -> left);
-    std::cout << root -> val << ' ';
+  if (root != nullptr) {
+    postorder(root->right);
+    postorder(root->left);
+    std::cout << root->val << ' ';
   }
 }
 void preorder(Node* root) {
-  if(root != nullptr) {
-    std::cout << root -> val << ' ';
-    preorder(root -> left);
-    preorder(root -> right);
+  if (root != nullptr) {
+    std::cout << root->val << ' ';
+    preorder(root->left);
+    preorder(root->right);
   }
 }
 Node* build(Node* root, int n) {
-  if(root == nullptr) {
+  if (root == nullptr) {
     return insert(n);
-  }
-  else if(root -> val > n) {
-    root -> left = build(root -> left, n);
-  }
-  else {
-    root -> right = build(root -> right, n);
+  } else if (root->val > n) {
+    root->left = build(root->left, n);
+  } else {
+    root->right = build(root->right, n);
   }
   return root;
 }
 bool find(Node* root, int key) {
-  if(root -> val > key && root -> left == nullptr) {
+  if (root->val > key && root->left == nullptr) {
     return 0;
   }
-  if(root -> val < key && root -> right == nullptr) {
+  if (root->val < key && root->right == nullptr) {
     return 0;
   }
-  if(root -> val == key) {
-     return 1;
-  }
-  else if(root -> val > key) {
-    find(root -> left, key);
-  }
-  else if(root -> val < key) {
-    find(root -> right, key);
-  }
-  else {
+  if (root->val == key) {
+    return 1;
+  } else if (root->val > key) {
+    find(root->left, key);
+  } else if (root->val < key) {
+    find(root->right, key);
+  } else {
     return 0;
   }
   return 0;
 }
 int countNodes(Node* root) {
-  if(root == nullptr) {
+  if (root == nullptr) {
     return 0;
   } else {
-    return 1 + countNodes(root -> left) + countNodes(root -> right);
+    return 1 + countNodes(root->left) + countNodes(root->right);
   }
 }
 int height(Node* root) {
-  if(root == nullptr) {
+  if (root == nullptr) {
     return 0;
   }
-  return 1 + max(height(root -> left), height(root -> right));
+  return 1 + max(height(root->left), height(root->right));
 }
 int diameter(Node* root) {
-  if(root == nullptr) {
+  if (root == nullptr) {
     return 0;
   }
-  return max(1 + height(root -> left) + height(root -> right),
-         max(diameter(root -> left), diameter(root -> right)));
+  return max(1 + height(root->left) + height(root->right),
+             max(diameter(root->left), diameter(root->right)));
 }
-int main(int argc, char const *argv[]) {
+int main(int argc, char const* argv[]) {
   Node* root = nullptr;
-  root = build(root ,5);
+  root = build(root, 5);
   // std::cout << root << '\n';
   build(root, 10);
   build(root, 20);

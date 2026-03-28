@@ -12,31 +12,31 @@ int ch[maxn][26];
 int fail[maxn];
 int sz;
 void insert(string s) {
-  int now = 0;  //字典树的当前指针
+  int now = 0;  // 字典树的当前指针
   for (int i = 0; i < (int)s.size(); i++) {
     int c = s[i] - 'a';
     // Trie树没有这个子节点 : 就构造出来
     if (!ch[now][c]) ch[now][c] = ++sz;
-    now = ch[now][c];  //然后向下构造
+    now = ch[now][c];  // 然后向下构造
   }
-  End[now]++;  //标记单词结尾
+  End[now]++;  // 标记单词结尾
 }
-void getfail()  //构造fail指针
+void getfail()  // 构造fail指针
 {
   queue<int> que;
   for (int i = 0; i < 26; i++) {
     if (ch[0][i]) {
       que.push(ch[0][i]);
-      fail[ch[0][i]] = 0;  //指向根节点
+      fail[ch[0][i]] = 0;  // 指向根节点
     }
   }
   while (!que.empty()) {  // BFS求fail指针
     int u = que.front();
     que.pop();
-    for (int i = 0; i < 26; i++) {  //枚举所有子节点
+    for (int i = 0; i < 26; i++) {  // 枚举所有子节点
       int v = ch[u][i];
-      if (v) {  //存在这个子节点
-        //子节点的 fail指针指向当前节点的 fail指针所指向的节点的相同子节点
+      if (v) {  // 存在这个子节点
+        // 子节点的 fail指针指向当前节点的 fail指针所指向的节点的相同子节点
         fail[v] = ch[fail[u]][i];
         que.push(v);
       }
@@ -51,7 +51,7 @@ int Count(string s) {
   int now = 0;
   int ans = 0;
   for (int i = 0; i < (int)s.size(); i++) {
-    now = ch[now][s[i] - 'a'];  //向下一层
+    now = ch[now][s[i] - 'a'];  // 向下一层
     for (int j = now; j && End[j] != -1; j = fail[j]) {
       ans += End[j];
       End[j] = -1;
@@ -60,7 +60,7 @@ int Count(string s) {
   return ans;
 }
 string s;
-int main(int argc, char const *argv[]) {
+int main(int argc, char const* argv[]) {
   int n;
   std::cin >> n;
   for (int i = 1; i <= n; i++) {

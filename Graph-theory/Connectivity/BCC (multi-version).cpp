@@ -12,10 +12,10 @@
   bcc[]为双连通点集
   割顶的bccno[]无意义
 */
-#include <iostream>
 #include <cstdio>
-#include <vector>
+#include <iostream>
 #include <stack>
+#include <vector>
 using namespace std;
 
 const int N = 500000;
@@ -48,12 +48,12 @@ void dfs(int u, int fa) {
     int v = e[i].v;
     t.u = u;
     t.v = v;
-    if (!pre[v])  //没有访问过
+    if (!pre[v])  // 没有访问过
     {
       s.push(t);
       dfs(v, u);
       low[u] = min(low[u], low[v]);
-      if (low[v] >= pre[u])  //点u为割点
+      if (low[v] >= pre[u])  // 点u为割点
       {
         iscut[u] = true;
         Edge x;
@@ -73,12 +73,12 @@ void dfs(int u, int fa) {
           }
         }
       }
-    } else if (v != fa && pre[v] < pre[u]) {  //存在反向边,更新low[u]
+    } else if (v != fa && pre[v] < pre[u]) {  // 存在反向边,更新low[u]
       s.push(t);
       low[u] = min(low[u], pre[v]);
     }
   }
-  if (fa == -1 && child == 1) iscut[u] = false;  //根节点特判
+  if (fa == -1 && child == 1) iscut[u] = false;  // 根节点特判
 }
 
 void find_bcc() {
@@ -113,14 +113,14 @@ void dfs(int u, int fa) {
     if (!pre[v]) {
       dfs(v, u);
       low[u] = min(low[u], low[v]);
-      if (low[v] > pre[u]) iscut[i] = true;  //存在割边
-    } else if (fa == v) {                    //反向边更新
+      if (low[v] > pre[u]) iscut[i] = true;  // 存在割边
+    } else if (fa == v) {                    // 反向边更新
       if (cnt) low[u] = min(low[u], pre[v]);
       cnt++;
     } else
       low[u] = min(low[u], pre[v]);
   }
-  if (low[u] == pre[u]) {  //充分必要条件
+  if (low[u] == pre[u]) {  // 充分必要条件
     int x = -1;
     bcnt++;
     while (x != u) {
@@ -173,12 +173,12 @@ void dfs(int u, int fa) {
     if (!pre[v]) {
       dfs(v, u);
       low[u] = min(low[u], low[v]);
-      if (low[v] > pre[u]) iscut[i] = true;   //存在割边
-    } else if (v != fa && pre[v] < pre[u]) {  //反向边更新
+      if (low[v] > pre[u]) iscut[i] = true;   // 存在割边
+    } else if (v != fa && pre[v] < pre[u]) {  // 反向边更新
       low[u] = min(low[u], pre[v]);
     }
   }
-  if (low[u] == pre[u])  //充分必要条件
+  if (low[u] == pre[u])  // 充分必要条件
   {
     int x = -1;
     bcnt++;

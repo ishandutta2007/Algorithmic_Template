@@ -1,10 +1,10 @@
-/*    
+/*
    HASH
    数字HASH,开散列,邻接表
 */
 
-#include <iostream>
 #include <cstdio>
+#include <iostream>
 
 typedef long long ll;
 const int MOD = 4001, STA = 1000010;  // MOD为表长,STA为表大小
@@ -16,12 +16,12 @@ struct Hash {
     sz = 0;
     memset(first, -1, sizeof(first));
   }
-  int find_add(ll st, ll ans) {  //查找,如果未查找到则添加
+  int find_add(ll st, ll ans) {  // 查找,如果未查找到则添加
     int i, u = st % MOD;
     for (i = first[u]; i != -1; i = next[i]) {
       if (sta[i] == st) {
-        f[i] += ans;  //状态累加,注意啦
-        return 1;     //已存在状态
+        f[i] += ans;  // 状态累加,注意啦
+        return 1;     // 已存在状态
       }
     }
     sta[sz] = st;

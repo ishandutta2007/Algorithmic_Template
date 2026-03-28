@@ -2,7 +2,7 @@
 const int N = 1e6 + 100;
 char tmp[2 * N];
 int r[2 * N];
-int manacher(char *s) {
+int manacher(char* s) {
   int len = strlen(s);
   for (int i = 0; i < len; i++) {
     tmp[2 * i + 1] = '#';

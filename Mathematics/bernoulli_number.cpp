@@ -1,9 +1,9 @@
 
-/*   
+/*
   bernoulli方程
   Sn(m)=1^n+2^n+...+(m-1)^n
   => Sn(m)=1/(m+1)(0~m)ΣC(m+1,k)Bk(m^(n+1-k))
-  其中:B0=1 , (0,m)ΣC(m+1,k)Bk=0     
+  其中:B0=1 , (0,m)ΣC(m+1,k)Bk=0
  */
 
 ll B[N][2], C[N][N], f[N][2];
@@ -23,7 +23,7 @@ void getC(int n) {
   }
 }
 
-void bernoulli(int n)  //得到B数组
+void bernoulli(int n)  // 得到B数组
 {
   int i, m;
   ll s[2], b[2], l, g;

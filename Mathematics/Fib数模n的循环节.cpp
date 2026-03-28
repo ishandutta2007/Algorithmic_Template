@@ -1,8 +1,9 @@
-#include <iostream>
-#include <string.h>
-#include <algorithm>
-#include <stdio.h>
 #include <math.h>
+#include <stdio.h>
+#include <string.h>
+
+#include <algorithm>
+#include <iostream>
 // http://blog.csdn.net/acdreamers/article/details/10983813
 using namespace std;
 typedef unsigned long long LL;

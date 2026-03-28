@@ -21,23 +21,23 @@ int n, m;
 
 void build_sa(int s[], int n, int m) {
   int i, k, p, *x = t1, *y = t2;
-  //第一轮基数排序
+  // 第一轮基数排序
   for (i = 0; i < m; i++) c[i] = 0;
   for (i = 0; i < n; i++) c[x[i] = s[i]]++;
   for (i = 1; i < m; i++) c[i] += c[i - 1];
   for (i = n - 1; i >= 0; i--) sa[--c[x[i]]] = i;
   for (k = 1; k <= n; k <<= 1) {
     p = 0;
-    //直接利用sa数组排序第二关键字
+    // 直接利用sa数组排序第二关键字
     for (i = n - k; i < n; i++) y[p++] = i;
     for (i = 0; i < n; i++)
       if (sa[i] >= k) y[p++] = sa[i] - k;
-    //基数排序第一关键字
+    // 基数排序第一关键字
     for (i = 0; i < m; i++) c[i] = 0;
     for (i = 0; i < n; i++) c[x[y[i]]]++;
     for (i = 1; i < m; i++) c[i] += c[i - 1];
     for (i = n - 1; i >= 0; i--) sa[--c[x[y[i]]]] = y[i];
-    //根据sa和x数组计算新的x数组
+    // 根据sa和x数组计算新的x数组
     swap(x, y);
     p = 1;
     x[sa[0]] = 0;
@@ -45,8 +45,8 @@ void build_sa(int s[], int n, int m) {
       x[sa[i]] = y[sa[i - 1]] == y[sa[i]] && y[sa[i - 1] + k] == y[sa[i] + k]
                      ? p - 1
                      : p++;
-    if (p >= n) break;  //已经排好序，直接退出
-    m = p;              //下次基数排序的最大值
+    if (p >= n) break;  // 已经排好序，直接退出
+    m = p;              // 下次基数排序的最大值
   }
 }
 

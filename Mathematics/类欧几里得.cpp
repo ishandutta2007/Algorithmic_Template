@@ -6,10 +6,10 @@
 
 // https://loj.ac/problem/138
 
-#include <iostream>
 #include <cstdio>
-#include <vector>
 #include <cstring>
+#include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -17,22 +17,21 @@ typedef long long ll;
 #define maxn 100010
 #define mod 1000000007
 
-ll qpower(ll a, ll b)
-{
-    ll ans = 1;
-    while(b > 0) {
-        if(b & 1) ans = (ans * a) % mod;
-        b >>= 1;
-        a = (a * a) % mod;
-    }
-    return ans;
+ll qpower(ll a, ll b) {
+  ll ans = 1;
+  while (b > 0) {
+    if (b & 1) ans = (ans * a) % mod;
+    b >>= 1;
+    a = (a * a) % mod;
+  }
+  return ans;
 }
 inline int mul(int a, int b) { return 1ll * a * b % mod; }
 // head
 int C[21][21];
 int tr[21][21];
 vector<int> mn(vector<int> p) {
-  //差分，返回p(x) - p(x - 1)
+  // 差分，返回p(x) - p(x - 1)
   int n = p.size();
   if (n == 1) return vector<int>{1, 0};
   vector<int> fn(n - 1);
@@ -45,7 +44,7 @@ vector<int> mn(vector<int> p) {
   return fn;
 }
 int cal(vector<int> p, int c) {
-  //计算c带入p的值
+  // 计算c带入p的值
   int mt = 1, ans = 0;
   for (int j = 0; j < p.size(); j++) {
     ans = (ans + mul(p[j], mt)) % mod;
@@ -54,7 +53,7 @@ int cal(vector<int> p, int c) {
   return ans;
 }
 void init() {
-  //计算组合数及前缀和系数
+  // 计算组合数及前缀和系数
   for (int i = 0; i < 20; i++)
     for (int j = 0; j <= i; j++) {
       if (i == j || j == 0)

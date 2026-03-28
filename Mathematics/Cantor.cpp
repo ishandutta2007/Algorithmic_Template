@@ -1,12 +1,13 @@
 
-/*   
+/*
   Cantor展开
   Cantor()返回的值从下标0开始
-  len为数组长度        
+  len为数组长度
 */
 
 const int PermSize = 12;
-int factory[PermSize] = {1,1,2,6,24, 120, 720, 5040, 40320, 362880, 3628800, 39916800};
+int factory[PermSize] = {1,   1,    2,     6,      24,      120,
+                         720, 5040, 40320, 362880, 3628800, 39916800};
 int Cantor(int a[], int len) {
   int i, j, counted;
   int result = 0;

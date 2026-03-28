@@ -1,27 +1,27 @@
-#include <queue>
-#include <cstdio>
-#include <set>
-#include <string>
-#include <stack>
-#include <cmath>
-#include <climits>
-#include <map>
-#include <cstdlib>
-#include <iostream>
-#include <vector>
 #include <algorithm>
+#include <climits>
+#include <cmath>
+#include <cstdio>
+#include <cstdlib>
 #include <cstring>
+#include <iostream>
+#include <map>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <vector>
 #define LL long long
 #define ULL unsigned long long
 using namespace std;
 const int MAXN = 100010;
-//以下为倍增算法求后缀数组
+// 以下为倍增算法求后缀数组
 int wa[MAXN], wb[MAXN], wv[MAXN], Ws[MAXN];
 
 // 由于末尾填了0，所以如果r[a]==r[b]（实际是y[a]==y[b]），
 // 说明待合并的两个长为j的字符串，前面那个一定不包含末尾0，
 // 因而后面这个的起始位置至多在0的位置，不会再靠后了，因而不会产生数组越界。
-int cmp(int *r, int a, int b, int l) {
+int cmp(int* r, int a, int b, int l) {
   return r[a] == r[b] && r[a + l] == r[b + l];
 }
 
@@ -33,7 +33,7 @@ int cmp(int *r, int a, int b, int l) {
     输出：无
 */
 /**< 传入参数：str,sa,len+1,ASCII_MAX+1 */
-void da(const char *r, int *sa, int n, int m)  // Doubling Algorithm
+void da(const char* r, int* sa, int n, int m)  // Doubling Algorithm
 {
   int i, j, p, *x = wa, *y = wb, *t;
 
@@ -49,8 +49,9 @@ void da(const char *r, int *sa, int n, int m)  // Doubling Algorithm
   for (j = 1, p = 1; p < n; j *= 2, m = p) {
     // 下面两个for是对第二个关键字进行排序
     for (p = 0, i = n - j; i < n; i++)
-      y[p++] = i;  //当长度为j时，n-j开始的后缀串都没有第二个关键字
-                   //那么这些字符串的第二个关键字都是补齐的最小字符，按照第二关键字排序后
+      y[p++] =
+          i;  // 当长度为j时，n-j开始的后缀串都没有第二个关键字
+              // 那么这些字符串的第二个关键字都是补齐的最小字符，按照第二关键字排序后
     // 这些字符串都将排在最前面。
     for (i = 0; i < n; i++)
       if (sa[i] >= j)
@@ -71,14 +72,13 @@ void da(const char *r, int *sa, int n, int m)  // Doubling Algorithm
   return;
 }
 int sa[MAXN], Rank[MAXN], height[MAXN];
-//求height数组
+// 求height数组
 /**< str,sa,len */
-void calheight(const char *r, int *sa, int n) {
+void calheight(const char* r, int* sa, int n) {
   int i, j, k = 0;
   for (i = 1; i <= n; i++) Rank[sa[i]] = i;
   for (i = 0; i < n; height[Rank[i++]] = k)
-    for (k ? k-- : 0, j = sa[Rank[i] - 1]; r[i + k] == r[j + k]; k++)
-      ;
+    for (k ? k-- : 0, j = sa[Rank[i] - 1]; r[i + k] == r[j + k]; k++);
   // Unified
   for (int i = n; i >= 1; --i) ++sa[i], Rank[i] = Rank[i - 1];
 }

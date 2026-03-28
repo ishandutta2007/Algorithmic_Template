@@ -59,7 +59,7 @@ struct Trie {
     }
   }
   void print(int id) {
-    printf("Case #%d:\n%d %d\n", id, ansl + 1, ansr); // 区间
+    printf("Case #%d:\n%d %d\n", id, ansl + 1, ansr);  // 区间
     std::cout << "max xor sum = " << ansv << '\n';
   }
 } trie;
@@ -71,7 +71,7 @@ void init() {
   }
 }
 
-int main(int argc, char const *argv[]) {
+int main(int argc, char const* argv[]) {
   init();
   int n, Cas;
   scanf("%d", &Cas);

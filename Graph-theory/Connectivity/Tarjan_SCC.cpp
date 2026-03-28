@@ -41,11 +41,11 @@ void tarjan(int u) {
     if (!pre[v]) {
       tarjan(v);
       low[u] = min(low[u], low[v]);
-    } else if (!sccno[v]) {  //反向边更新
+    } else if (!sccno[v]) {  // 反向边更新
       low[u] = min(low[u], low[v]);
     }
   }
-  if (low[u] == pre[u]) {  //存在强连通分量
+  if (low[u] == pre[u]) {  // 存在强连通分量
     int x = -1;
     scnt++;
     while (x != u) {

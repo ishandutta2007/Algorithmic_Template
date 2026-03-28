@@ -2,7 +2,7 @@ typedef complex<double> Complex;
 
 const double PI = acos(-1.0);
 
-void radar(Complex *y, int len) {
+void radar(Complex* y, int len) {
   for (int i = 1, j = len / 2; i < len - 1; i++) {
     if (i < j) swap(y[i], y[j]);
     int k = len / 2;
@@ -14,7 +14,7 @@ void radar(Complex *y, int len) {
   }
 }
 
-void fft(Complex *y, int len, int op) {
+void fft(Complex* y, int len, int op) {
   radar(y, len);
   for (int h = 2; h <= len; h <<= 1) {
     double ang = op * 2 * PI / h;

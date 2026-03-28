@@ -1,4 +1,4 @@
-//可重叠
+// 可重叠
 #include <stdio.h>
 #include <string.h>
 void makeNext(const char P[], int next[]) {

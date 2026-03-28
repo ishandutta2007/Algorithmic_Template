@@ -13,11 +13,10 @@
 using namespace std;
 const int N = 101010;
 int next[N], extand[N];
-void getnext(char *T) {  // next[i]: 以第i位置开始的子串 与 T的公共前缀
+void getnext(char* T) {  // next[i]: 以第i位置开始的子串 与 T的公共前缀
   int i, length = strlen(T);
   next[0] = length;
-  for (i = 0; i < length - 1 && T[i] == T[i + 1]; i++)
-    ;
+  for (i = 0; i < length - 1 && T[i] == T[i + 1]; i++);
   next[1] = i;
   int a = 1;
   for (int k = 2; k < length; k++) {
@@ -31,7 +30,7 @@ void getnext(char *T) {  // next[i]: 以第i位置开始的子串 与 T的公共
       next[k] = L;
   }
 }
-void getextand(char *S, char *T) {
+void getextand(char* S, char* T) {
   memset(next, 0, sizeof(next));
   getnext(T);
   int Slen = strlen(S), Tlen = strlen(T), a = 0;

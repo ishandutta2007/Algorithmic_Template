@@ -1,5 +1,5 @@
 
-//区间翻转：https://loj.ac/problem/105
+// 区间翻转：https://loj.ac/problem/105
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -13,7 +13,7 @@ int siz[maxn], fa[maxn], ma[maxn], rev[maxn], lazy[maxn], val[maxn];
 // lazy 区间+, val 值
 // tot代表开新节点的时间戳,root代表splay的树根，ch[i][2],i的左右儿子
 int ch[maxn][2], tot, root;
-void newnode(int &rt, int father, int k) {
+void newnode(int& rt, int father, int k) {
   rt = ++tot;
   siz[rt] = 1, fa[rt] = father;
   ma[rt] = val[rt] = k;
@@ -28,7 +28,7 @@ void pushup(int rt) {  // pushup 从底向上更新
 }
 void pushdown(int rt) {  // pushdown 从上向下更新
   if (!rt) return;
-  if (lazy[rt]) {  //区间+懒惰标记传递
+  if (lazy[rt]) {  // 区间+懒惰标记传递
     int l = ch[rt][0], r = ch[rt][1];
     if (l != 0) ma[l] += lazy[rt], val[l] += lazy[rt], lazy[l] += lazy[rt];
     if (r != 0) ma[r] += lazy[rt], val[r] += lazy[rt], lazy[r] += lazy[rt];
@@ -65,7 +65,7 @@ void splay(int x, int goal)  // 伸展操作,把根为r的子树调整为goal
   }
   if (goal == 0) root = x;
 }
-void build(int &rt, int l, int r, int father) {  // 建立一颗空的splaytree
+void build(int& rt, int l, int r, int father) {  // 建立一颗空的splaytree
   if (l > r) return;
   int mid = (l + r) / 2;
   newnode(rt, father, a[mid]);  // 递归申请新节点
@@ -108,7 +108,7 @@ void dfs(int x) {
   if (val[x] >= 1 && val[x] <= n) printf("%d ", val[x]);
   if (ch[x][1]) dfs(ch[x][1]);
 }
-}
+}  // namespace SplayTree
 using namespace SplayTree;
 
 int main() {

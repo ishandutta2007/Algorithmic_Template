@@ -1,4 +1,4 @@
-// 求两个数相乘超过long long取摸的快速运算O(1)  
+// 求两个数相乘超过long long取摸的快速运算O(1)
 inline ll mul_mod(ll a, ll b, ll mod) {
   assert(0 <= a && a < mod);
   assert(0 <= b && b < mod);

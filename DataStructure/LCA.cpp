@@ -25,8 +25,8 @@
   注意他们的最近公共祖先为他们本身的情况!!!
 
  */
-#include <iostream>
 #include <cstdio>
+#include <iostream>
 using namespace std;
 
 const int N = 50000;
@@ -43,7 +43,7 @@ void addedge(int a, int b) {
   first[a] = mt++;
 }
 
-int Minele(int i, int j)  //比较距离来获取下标
+int Minele(int i, int j)  // 比较距离来获取下标
 {
   return d[i] < d[j] ? i : j;
 }
@@ -78,9 +78,9 @@ void dfs(int u, int deep) {
 
 // O(n*logn)
 void LCA_Init() {
-  dis = 1;              //初始化为1
-  dfs(root, 0);         //传递根节点和深度
-  rmq_init(2 * n - 1);  //传递E[]和R[]的长度
+  dis = 1;              // 初始化为1
+  dfs(root, 0);         // 传递根节点和深度
+  rmq_init(2 * n - 1);  // 传递E[]和R[]的长度
 }
 
 // o(1)

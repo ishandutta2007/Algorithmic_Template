@@ -10,11 +10,11 @@ JSHash     1	4	4761	506	100	84.62	96.83	17.95	81.94
 RSHash     1	0	4861	505	100	100	51.58	20.51	75.96
 SDBMHash   3	2	4849	504	93.1	92.31	57.01	23.08	72.41
 PJWHash	  30	26	4878	513	0	0	43.89	0	21.95
-ELFHash	  30	26	4878	513	0	0	43.89	0	21.95 
+ELFHash	  30	26	4878	513	0	0	43.89	0	21.95
 */
 
 // BKDR Hash Function
-unsigned int BKDRHash(char *str) {
+unsigned int BKDRHash(char* str) {
   unsigned int seed = 131;  // 31 131 1313 13131 131313 etc..
   unsigned int hash = 0;
 
@@ -26,7 +26,7 @@ unsigned int BKDRHash(char *str) {
 }
 
 // SDBMHash
-unsigned int SDBMHash(char *str) {
+unsigned int SDBMHash(char* str) {
   unsigned int hash = 0;
 
   while (*str) {
@@ -38,7 +38,7 @@ unsigned int SDBMHash(char *str) {
 }
 
 // RS Hash Function
-unsigned int RSHash(char *str) {
+unsigned int RSHash(char* str) {
   unsigned int b = 378551;
   unsigned int a = 63689;
   unsigned int hash = 0;
@@ -52,7 +52,7 @@ unsigned int RSHash(char *str) {
 }
 
 // JS Hash Function
-unsigned int JSHash(char *str) {
+unsigned int JSHash(char* str) {
   unsigned int hash = 1315423911;
 
   while (*str) {
@@ -63,7 +63,7 @@ unsigned int JSHash(char *str) {
 }
 
 // P. J. Weinberger Hash Function
-unsigned int PJWHash(char *str) {
+unsigned int PJWHash(char* str) {
   unsigned int BitsInUnignedInt = (unsigned int)(sizeof(unsigned int) * 8);
   unsigned int ThreeQuarters = (unsigned int)((BitsInUnignedInt * 3) / 4);
   unsigned int OneEighth = (unsigned int)(BitsInUnignedInt / 8);
@@ -83,7 +83,7 @@ unsigned int PJWHash(char *str) {
 }
 
 // ELF Hash Function
-unsigned int ELFHash(char *str) {
+unsigned int ELFHash(char* str) {
   unsigned int hash = 0;
   unsigned int x = 0;
 
@@ -99,7 +99,7 @@ unsigned int ELFHash(char *str) {
 }
 
 // DJB Hash Function
-unsigned int DJBHash(char *str) {
+unsigned int DJBHash(char* str) {
   unsigned int hash = 5381;
 
   while (*str) {
@@ -110,7 +110,7 @@ unsigned int DJBHash(char *str) {
 }
 
 // AP Hash Function
-unsigned int APHash(char *str) {
+unsigned int APHash(char* str) {
   unsigned int hash = 0;
   int i;
 

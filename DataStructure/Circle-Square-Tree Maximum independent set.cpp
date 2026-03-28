@@ -34,8 +34,7 @@ void tarjan(int u) {
     if (!dfn[v]) {
       fa[v] = u;
       tarjan(v);
-    }
-    else if (dfn[v] < dfn[u]) {
+    } else if (dfn[v] < dfn[u]) {
       n++;
       len[n] = dfn[u] - dfn[v] + 1;
       fa[n] = v;
