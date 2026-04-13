@@ -1,9 +1,3 @@
-/*
- * @Author: zhaoyang.liang
- * @Github: https://github.com/LzyRapx
- * @Date: 2019-06-13 00:02:05
- */
-
 #include <cstdio>
 #include <iostream>
 using namespace std;

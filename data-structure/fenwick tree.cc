@@ -1,3 +1,6 @@
+/**
+ * @brief binary index tree (fenwick tree)
+ */
 template <typename T>
 struct BIT {
   int n;
