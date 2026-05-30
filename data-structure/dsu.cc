@@ -1,23 +1,36 @@
 /**
  * @brief 并查集 (Disjoint Set Union / Union-Find)
  */
+struct dsu {
+    vector<int> fa;
+    dsu(int n) {
+        fa.resize(n + 1);
+        iota(fa.begin(), fa.end(), 0);
+    }
+    int find(int x) {
+        return fa[x] == x ? x : fa[x] = find(fa[x]);
+    }
+    void unite(int x, int y) {
+        x = find(x);
+        y = find(y);
+        if (x != y) fa[x] = y;
+    }
+};
+
 class DSU {
 private:
     std::vector<int> parent;
     std::vector<int> sz;     // 每个集合的大小
     int components;          // 当前连通分量的数量
-
 public:
     // init from 0 ~ n-1
     explicit DSU(int n) : parent(n), sz(n, 1), components(n) {
         std::iota(parent.begin(), parent.end(), 0);
     }
-
     // find root
     int find(int u) {
         return parent[u] == u ? u: parent[u] = find(parent[u]);
     }
-
     // 合并两个元素所在的集合
     // return：如果发生了实际合并返回 true，若已在同一集合返回 false
     bool unite(int u, int v) {
@@ -32,23 +45,18 @@ public:
         components--; // 每成功合并一次，连通分量减少一个
         return true;
     }
-
     // 判断两个元素是否属于同一个集合
     bool same(int u, int v) {
         return find(u) == find(v);
     }
-
     // 获取元素 u 所属集合的大小
     int size(int u) {
         return sz[find(u)];
     }
-
     // 获取当前连通分量的总数
     int count() const {
         return components;
     }
-
-    // reset
     void reset(int n) {
         parent.resize(n);
         std::iota(parent.begin(), parent.end(), 0);
